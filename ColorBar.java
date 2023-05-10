@@ -1,6 +1,7 @@
-package pixelArt;
+package art;
 
 import java.awt.Color;
+import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -34,11 +35,16 @@ public class ColorBar extends JPanel implements ActionListener {
     private JSlider green;
     private JSlider blue;
     
+    private JLabel redLabel;
+    private JLabel greenLabel;
+    private JLabel blueLabel;
+    
     public ColorBar(DrawFrame frame) {
         cc = new JToolBar(JToolBar.HORIZONTAL);
         cc.setLayout(new FlowLayout());
         cc.setBorder(BorderFactory.createMatteBorder(1, 0, 1, 0, Color.BLACK));
         cc.setFloatable(false);
+        
         this.frame = frame;
         this.initializeColorChooser(cc);
 
@@ -120,7 +126,6 @@ public class ColorBar extends JPanel implements ActionListener {
         panel.add(green);
         panel.add(greenLabel);
     }
-
 
     @Override
     public void actionPerformed(ActionEvent e) {

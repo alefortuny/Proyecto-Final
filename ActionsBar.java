@@ -1,8 +1,9 @@
-package pixelArt;
+package art;
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -21,7 +22,7 @@ public class ActionsBar implements ActionListener {
     private JButton save;
     private JButton open;
     private JButton clear;
-    private Dimension newDimensions = new Dimension(700, 500);
+    private Dimension newDimensions = new Dimension(300, 300);
 
     private JFileChooser fc;
     private File f;
@@ -88,12 +89,31 @@ public class ActionsBar implements ActionListener {
         try {
             frame.getInkPanel().setImage(ImageIO.read(f));
             newDimensions = new Dimension(ImageIO.read(f).getWidth(), ImageIO.read(f).getHeight());
-            frame.getSP().setSize(newDimensions.width, newDimensions.height);
+            setDimensions(newDimensions.width, newDimensions.height);
         } catch (IOException e) {            
             e.printStackTrace();
         }
     }
-
+private void setDimensions(int width, int height)
+	{
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		if(height > dim.height - 160 && width > dim.width - 150)
+		{
+			frame.getSP().setSize(dim.width - 150, dim.height - 160);
+		}	
+		else if(width > dim.width - 150)
+		{
+			frame.getSP().setSize(dim.width - 150, height);
+		}
+		else if(height > dim.height - 160)
+		{
+			frame.getSP().setSize(width, dim.height - 160);
+		}
+		else
+		{
+			frame.getSP().setSize(width, height);
+		}
+	}
     private void saveFile(File f) throws IOException {
         BufferedImage im = makePanel(frame.getInkPanel());
         ImageIO.write(im, "png", f);

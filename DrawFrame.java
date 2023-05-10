@@ -1,4 +1,4 @@
-package pixelArt;
+package art;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -22,24 +22,24 @@ public class DrawFrame extends JFrame {
 
     private JScrollPane sp;
 
-    private final int CONTENT_PANE_WIDTH = 1300;
-    private final int CONTENT_PANE_HEIGHT = 700;
+    private final int CONTENT_PANE_WIDTH = 700;
+    private final int CONTENT_PANE_HEIGHT = 500;
 
     private int inkPanelWidth;
     private int inkPanelHeight;
     private final Color background = Color.GRAY;
 
     public DrawFrame() {
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        inkPanelWidth = dim.width - 150;
-        inkPanelHeight = dim.height - 160;
+        
+        inkPanelWidth = 700;
+        inkPanelHeight = 500;
         contentPane = new JPanel();
         contentPane.setLayout(null);
         toolBar = (new ActionsBar(this)).getToolBar();
 
         cc1 = (new ColorBar(this)).getToolBar();
 
-        inkPanel = new PaintPanel(0, this, inkPanelWidth, inkPanelHeight, 10);
+        inkPanel = new PaintPanel(0, this, inkPanelWidth, inkPanelHeight, 30);
 
         this.add(cc1, BorderLayout.PAGE_START);
         sp = new JScrollPane();

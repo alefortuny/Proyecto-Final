@@ -1,4 +1,4 @@
-package pixelArt;
+package art;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -19,7 +19,7 @@ public class PaintPanel extends JPanel implements MouseListener, MouseMotionList
     private final int BORRAR = 0;
     private final int PINTAR = 1;
 
-    private BasicStroke stroke = new BasicStroke((float) 10);
+    private BasicStroke stroke = new BasicStroke((float) 30);
     BufferedImage canvas;
     Graphics2D graphics2D;
     private int activeTool = 1;
@@ -56,7 +56,7 @@ public class PaintPanel extends JPanel implements MouseListener, MouseMotionList
         this.setPreferredSize(new Dimension(inkPanelWidth - 3, inkPanelHeight - 3));
         this.setLayout(null);
         setDoubleBuffered(true);
-        setLocation(20, 20);
+        setLocation(10, 10);
         setBackground(Color.WHITE);
         currentColor = Color.BLACK;
         this.fillColor = Color.white;
@@ -124,11 +124,11 @@ public class PaintPanel extends JPanel implements MouseListener, MouseMotionList
         graphics2D.setColor(currentColor);
         
         BasicStroke strokeLine = new BasicStroke((float) 1);
-        for (int i = 0; i < getSize().width ; i += 10) {
+        for (int i = 0; i < getSize().width ; i += 30) {
             shapes.push(new Shape(i, getSize().width + i, i, 0, Color.BLACK, strokeLine , 1, grouped));
         }
        
-        for (int i = 0; i < getSize().width ; i += 10) {
+        for (int i = 0; i < getSize().width ; i += 30) {
             shapes.push(new Shape(getSize().width + i, i, 0, i, Color.BLACK, strokeLine, 1, grouped));
         }
         
